@@ -79,7 +79,8 @@ public class RevealHelper
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
-                revealListener.onEndAnimation();
+                if(revealListener != null)
+                    revealListener.onEndAnimation();
             }
         });
         anim.start();
@@ -87,7 +88,7 @@ public class RevealHelper
     //--------------------------------------------------------------------------------------------//
     static void unreveal(View revealView, int x, int y, float startRadius, float endRadius, long duration, long delay, RevealListener revealListener)
     {
-        expand(revealView, x, y, startRadius, endRadius, duration, delay, revealListener);
+        collapse(revealView, x, y, startRadius, endRadius, duration, delay, revealListener);
     }
 
     private static void collapse(final View revealView, int x, int y, float startRadius, float endRadius, long duration, long delay, final RevealListener revealListener)
@@ -101,7 +102,8 @@ public class RevealHelper
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
                 revealView.setVisibility(View.INVISIBLE);
-                revealListener.onEndAnimation();
+                if(revealListener != null)
+                    revealListener.onEndAnimation();
             }
         });
         anim.start();

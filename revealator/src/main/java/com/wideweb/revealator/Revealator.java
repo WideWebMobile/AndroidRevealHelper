@@ -26,7 +26,7 @@ public class Revealator
 
         private int reveal_position = CENTER;
 
-        private RevealListener revealListener;
+        private RevealListener revealListener = null;
 
         private RevealBuilder(@NonNull final View revealView) {
             this.revealView = revealView;
@@ -84,7 +84,7 @@ public class Revealator
 
             float radius = (float) Math.hypot(dx, dy);
 
-            RevealHelper.reveal(this.revealView, x, y, radius, 0, this.duration, this.delay, this.revealListener);
+            RevealHelper.unreveal(this.revealView, x, y, radius, 0, this.duration, this.delay, this.revealListener);
         }
     }
 }
