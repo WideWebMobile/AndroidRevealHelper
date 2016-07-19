@@ -38,7 +38,7 @@ and use the Revealator's magic to reveal or unreveal:
 ```
  Revealator.reveal( revealView )
                 .from( rootView )
-                .setRevealPosition( revealPosition )      //RevealPosition.CENTER - default
+                .setRevealPosition( revealPosition )      // RevealPosition.CENTER - default
                 .setDelay( long delay )                   // 0 - default
                 .setDuration( long duration )             // 450 - default
                 .onEndCallback(new RevealListener() {
@@ -47,7 +47,7 @@ and use the Revealator's magic to reveal or unreveal:
                         **your code here**
                     }
                 })
-                .startReveal();                           //or .startUnreveal();
+                .startReveal();                           // or .startUnreveal();
 ```
 
 ### References
