@@ -22,7 +22,7 @@ Add this to your module's `build.gradle` file:
 ```gradle
 dependencies {
     ...
-    compile 'com.github.WideWebMobile:AndroidRevealHelper:2.0.1''
+    compile 'com.github.WideWebMobile:AndroidRevealHelper:2.0.1'
 }
 ```
 ### How to use:
