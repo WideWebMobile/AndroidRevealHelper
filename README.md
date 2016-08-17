@@ -1,6 +1,8 @@
 # AndroidRevealHelper
-Gradle Dependency
-Release Build Status License
+Helper to circle reveal/unreveal a view easily
+
+### Preview 
+<img src="https://github.com/WideWebMobile/AndroidRevealHelper/blob/master/preview/revealator.gif" width="30%">
 
 ### Repository
 
@@ -75,7 +77,7 @@ and then
  Revealator.revealView(mRevealView)
                         .targetView(mRevealButton)
                         .setRevealPosition(RevealPosition.CENTER)
-                        .setDuration(300)
+                        .setDuration(450)
                         .startReveal();
 ```
 or
@@ -83,7 +85,7 @@ or
 Revealator.revealView(mRevealView)
                         .targetView(mUnrevealButton)
                         .setRevealPosition(RevealPosition.CENTER)
-                        .setDuration(300)
+                        .setDuration(450)
                         .startUnreveal();
 ```
 All features:
