@@ -10,7 +10,7 @@ import static com.wideweb.revealator.RevealPosition.*;
  */
 public class Revealator
 {
-    public static RevealBuilder reveal(@NonNull final View revealView) {
+    public static RevealBuilder revealView(@NonNull final View revealView) {
         return new RevealBuilder(revealView);
     }
 
@@ -18,7 +18,7 @@ public class Revealator
     {
         private View revealView;
 
-        private View rootView;
+        private View targetView;
 
         private long duration = 450;
 
@@ -32,8 +32,8 @@ public class Revealator
             this.revealView = revealView;
         }
 
-        public RevealBuilder from(@NonNull final View rootView) {
-            this.rootView = rootView;
+        public RevealBuilder targetView(@NonNull final View targetView) {
+            this.targetView = targetView;
             return this;
         }
 
@@ -59,30 +59,36 @@ public class Revealator
 
         public void startReveal()
         {
-            int[] xy = RevealHelper.getRevealPosition(this.rootView, this.reveal_position);
+            if(this.targetView == null)
+                this.targetView = this.revealView;
 
-            int x = xy[0];
-            int y = xy[1];
+            final int[] xy = RevealHelper.getRevealPosition(this.targetView, this.reveal_position);
 
-            int dx = this.revealView.getWidth();
-            int dy = this.revealView.getHeight();
+            final int x = xy[0];
+            final int y = xy[1];
 
-            float radius = (float) Math.hypot(dx, dy);
+            final int dx = Math.max(x, this.targetView.getWidth() - x);
+            final int dy = Math.max(y, this.targetView.getHeight() - y);
+
+            final float radius = (float) Math.hypot(dx, dy);
 
             RevealHelper.reveal(this.revealView, x, y, 0, radius, this.duration, this.delay, this.revealListener);
         }
 
         public void startUnreveal()
         {
-            int[] xy = RevealHelper.getRevealPosition(this.rootView, this.reveal_position);
+            if(this.targetView == null)
+                this.targetView = this.revealView;
 
-            int x = xy[0];
-            int y = xy[1];
+            final int[] xy = RevealHelper.getRevealPosition(this.targetView, this.reveal_position);
 
-            int dx = this.revealView.getWidth();
-            int dy = this.revealView.getHeight();
+            final int x = xy[0];
+            final int y = xy[1];
 
-            float radius = (float) Math.hypot(dx, dy);
+            final int dx = Math.max(x, this.targetView.getWidth() - x);
+            final int dy = Math.max(y, this.targetView.getHeight() - y);
+
+            final float radius = (float) Math.hypot(dx, dy);
 
             RevealHelper.unreveal(this.revealView, x, y, radius, 0, this.duration, this.delay, this.revealListener);
         }

@@ -2,7 +2,6 @@ package com.wideweb.revealator;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.graphics.Rect;
 import android.view.View;
 
 import io.codetail.animation.ViewAnimationUtils;
@@ -16,43 +15,40 @@ public class RevealHelper
 {
     private static final int STATUS_BAR_HEIGHT = 50;
     //--------------------------------------------------------------------------------------------//
-    static int[] getRevealPosition(View rootView, int reveal_position)
+    static int[] getRevealPosition(View targetView, int reveal_position)
     {
         int x = 0;
         int y = 0;
 
-        Rect viewRect = new Rect();
-        rootView.getGlobalVisibleRect(viewRect);
-
         switch (reveal_position)
         {
             case CENTER:
-                x = (int) viewRect.exactCenterX();
-                y = (int) (viewRect.exactCenterY() - STATUS_BAR_HEIGHT);
+                x = (targetView.getLeft() + targetView.getRight()) / 2;
+                y = (targetView.getTop() + targetView.getBottom()) / 2;
                 break;
             case BOTTOM_RIGHT:
-                x = viewRect.right;
-                y = viewRect.bottom;
+                x = targetView.getRight();
+                y = targetView.getBottom();
                 break;
             case BOTTOM_LEFT:
-                x = viewRect.left;
-                y = viewRect.bottom;
+                x = targetView.getLeft();
+                y = targetView.getBottom();
                 break;
             case BOTTOM_CENTER:
-                x = (int) viewRect.exactCenterX();
-                y = viewRect.bottom;
+                x = (targetView.getLeft() + targetView.getRight()) / 2;
+                y = targetView.getBottom();
                 break;
             case TOP_RIGHT:
-                x = viewRect.right;
-                y = viewRect.top;
+                x = targetView.getRight();
+                y = targetView.getTop();
                 break;
             case TOP_LEFT:
-                x = viewRect.left;
-                y = viewRect.top;
+                x = targetView.getLeft();
+                y = targetView.getTop();
                 break;
             case TOP_CENTER:
-                x = (int) viewRect.exactCenterX();
-                y = viewRect.top;
+                x = (targetView.getLeft() + targetView.getRight()) / 2;
+                y = targetView.getTop();
                 break;
         }
 
