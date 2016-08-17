@@ -22,22 +22,67 @@ Add this to your module's `build.gradle` file:
 ```gradle
 dependencies {
     ...
-    compile 'com.github.WideWebMobile:AndroidRevealHelper:2.0.1'
+    compile 'com.github.WideWebMobile:AndroidRevealHelper:2.0.2'
 }
 ```
 ### How to use:
 
 Just put the view you want to animate in a `io.codetail.widget.RevealFrameLayout`:
 ```
-<io.codetail.widget.RevealFrameLayout
+ <io.codetail.widget.RevealFrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-</io.codetail.widget.RevealFrameLayout>
+
+        <View
+            android:id="@+id/main_reveal_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:visibility="invisible" />
+    </io.codetail.widget.RevealFrameLayout>
+    
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/main_reveal_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="16dp"
+        android:background="#FF5722"
+        android:text="Reveal"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
+        android:textColor="#FFFFFF" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/main_unreveal_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:background="#FF5722"
+        android:text="Unreveal"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
+        android:textColor="#FFFFFF" />
 ```
 and use the Revealator's magic to reveal or unreveal:
 ```
- Revealator.reveal( revealView )
-                .from( rootView )
+ Revealator.revealView(mRevealView)
+                        .targetView(mRevealButton)
+                        .setRevealPosition(RevealPosition.CENTER)
+                        .setDuration(300)
+                        .startReveal();
+```
+or
+```
+Revealator.revealView(mRevealView)
+                        .targetView(mUnrevealButton)
+                        .setRevealPosition(RevealPosition.CENTER)
+                        .setDuration(300)
+                        .startUnreveal();
+```
+All features:
+```
+ Revealator.revealView( revealView )
+                .targetView( targetView )
                 .setRevealPosition( revealPosition )      // RevealPosition.CENTER - default
                 .setDelay( long delay )                   // 0 - default
                 .setDuration( long duration )             // 450 - default
