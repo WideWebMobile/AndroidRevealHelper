@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Revealator.revealView(mRevealView)
                         .targetView(mRevealButton)
                         .setRevealPosition(RevealPosition.CENTER)
-                        .setDuration(300)
+                        .setDuration(450)
                         .startReveal();
 
                 break;
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Revealator.revealView(mRevealView)
                         .targetView(mUnrevealButton)
                         .setRevealPosition(RevealPosition.CENTER)
-                        .setDuration(300)
+                        .setDuration(450)
                         .startUnreveal();
                 break;
         }
