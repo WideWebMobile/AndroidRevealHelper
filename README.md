@@ -64,6 +64,13 @@ Just put the view you want to animate in a `io.codetail.widget.RevealFrameLayout
         android:textColor="#FFFFFF" />
 ```
 and use the Revealator's magic to reveal or unreveal:
+
+```
+mRevealButton = (AppCompatButton) findViewById(R.id.main_reveal_button);
+mUnrevealButton = (AppCompatButton) findViewById(R.id.main_unreveal_button);
+mRevealView = findViewById(R.id.main_reveal_view);
+```
+and then
 ```
  Revealator.revealView(mRevealView)
                         .targetView(mRevealButton)
